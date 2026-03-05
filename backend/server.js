@@ -2,6 +2,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import workoutRoutes from './src/routes/workoutRoutes.js';
+import Workout from './src/models/Workout.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
