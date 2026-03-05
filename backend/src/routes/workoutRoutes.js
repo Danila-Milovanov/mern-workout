@@ -1,5 +1,6 @@
 // src/routes/workoutRoutes.js
 import express from 'express';
+import Workout from '../models/Workout';
 
 // Maak router
 const router = express.Router();
@@ -16,9 +17,10 @@ router.get('/:id', (req, res) => {
 });
 
 // POST nieuwe workout
-router.post('/', (req, res) => {
-  res.json({ message: 'POST workout', data: req.body });
-});
+router.post('/', async (req, res) => {
+  const workout = await Workout.create({ title, reps, load }); 
+  res.json(workout); // Nu écht opgeslagen!
+})
 
 // PATCH workout
 router.patch('/:id', (req, res) => {
