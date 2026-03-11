@@ -1,14 +1,19 @@
-import express from 'express'
-import {
+const express = require('express')
+const {
   createWorkout,
   getWorkouts,
   getWorkout
-} from '../controllers/workoutController.js'
+} = require('../controllers/workoutController')
 
 const router = express.Router()
 
+// GET all
 router.get('/', getWorkouts)
+
+// GET single
 router.get('/:id', getWorkout)
+
+// POST
 router.post('/', createWorkout)
 
-export default router
+module.exports = router
