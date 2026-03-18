@@ -27,13 +27,3 @@ mongoose.connect(process.env.MONGO_URI)
     console.error('Database verbinding mislukt:', error.message);
   });
 
-  // CORS toestaan voor frontend
-app.use(cors({
-    origin: 'http://localhost:5173'
-}));
-
-// Middleware voor JSON
-app.use(express.json());
-
-// Routes
-app.use('/api/workouts', workoutRoutes);
