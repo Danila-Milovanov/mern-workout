@@ -11,23 +11,6 @@ import { requireAuth } from '../middleware/requireAuth.js'
 
 const router = express.Router()
 
-const token = localStorage.getItem("token")
-
-const response = await fetch("/api/workouts", {
-  headers: {
-    "Authorization": `Bearer ${token}`
-  }
-})
-
-await fetch("/api/workouts", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${token}`
-  },
-  body: JSON.stringify(workoutData)
-})
-
 router.use(requireAuth);
 
 router.get('/', getWorkouts);
