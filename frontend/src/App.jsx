@@ -1,18 +1,18 @@
-// App.jsx
-import { useState } from 'react';
-import WorkoutForm from './components/WorkoutForm.jsx';
-import WorkoutList from './components/WorkoutList.jsx';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
+import Home from "./pages/Home"
 
 function App() {
-  const [workouts, setWorkouts] = useState([]);
-
   return (
-    <div className="App">
-      <h1>Workout Tracker</h1>
-      <WorkoutForm setWorkouts={setWorkouts} />
-      <WorkoutList workouts={workouts} setWorkouts={setWorkouts} />
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

@@ -29,8 +29,25 @@ function Register() {
     return (
         <form onSubmit={handleSubmit}>
             <h2>Register</h2>
+            <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
 
+            <button>Register</button>
+
+            {error && <p>{error}</p>}
 
         </form>
     )
 }
+
+export default Register;
