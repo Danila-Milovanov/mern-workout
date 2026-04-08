@@ -1,6 +1,3 @@
-# MERN Workout Tracker - Final Assignment Complete! ✅
-
-## What's Implemented
 
 ### 🔐 Authentication System
 - **Login Form** (`/login`)
