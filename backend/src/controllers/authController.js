@@ -13,12 +13,6 @@ export const register = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        // Check of email al bestaat
-        const exists = await User.findOne({ email });
-        if (exists) {
-            return res.status(400).json({ error: 'Email is al in gebruik' });
-        }
-
         // Check of velden ingevuld zijn
         if (!email || !password) {
             return res.status(400).json({ error: 'Vul alle velden in' });
@@ -26,9 +20,15 @@ export const register = async (req, res) => {
 
         // Check wachtwoord lengte
         if (password.length < 6) {
-            return res.status(400).json({ 
-                error: 'Wachtwoord moet minimaal 6 karakters zijn' 
+            return res.status(400).json({
+                error: 'Wachtwoord moet minimaal 6 karakters zijn'
             });
+        }
+
+        // Check of email al bestaat
+        const exists = await User.findOne({ email });
+        if (exists) {
+            return res.status(400).json({ error: 'Email is al in gebruik' });
         }
 
         // Maak nieuwe gebruiker
@@ -41,6 +41,7 @@ export const register = async (req, res) => {
         res.status(201).json({ email: user.email, token });
 
     } catch (error) {
+        console.error('Register error:', error);
         res.status(500).json({ error: 'Server error' });
     }
 };
@@ -78,6 +79,7 @@ export const login = async (req, res) => {
         res.status(200).json({ email: user.email, token });
 
     } catch (error) {
+        console.error('Login error:', error);
         res.status(500).json({ error: 'Server error' });
     }
 };
